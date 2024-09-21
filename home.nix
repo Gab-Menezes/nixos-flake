@@ -58,12 +58,14 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    ".bashrc".source = ./configs/.bashrc;
-    ".profile".source = ./configs/.profile;
+
+    #".bashrc".source = ./configs/.bashrc;
+    #".profile".source = ./configs/.profile;
   };
 
   home.shellAliases = {
     ll = "ls -lha";
+    g = "git";
   };
 
   # Home Manager can also manage your environment variables through
@@ -89,6 +91,12 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  programs.bash = {
+    enable = true;
+    historyControl = [ "ignoredups" "erasedups" ];
+    bashrcExtra = import ./configs/bashrc.nix;
+  };
+
   programs.git = {
     enable = true;
     userEmail = "gaha204@hotmail.com";
@@ -102,9 +110,4 @@
     enable = true;
     settings = import ./configs/htop.nix;
   };
-  #programs.keychain = {
-  #  enable = true;
-  #  keys = [ "github" ];
-  #  agents = [ "ssh" ];
-  #};
 }
