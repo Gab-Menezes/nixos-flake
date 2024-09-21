@@ -1,0 +1,28 @@
+{
+  modules = [
+    "title"
+    "separator"
+    "os"
+    "host"
+    "kernel"
+    "uptime"
+    "shell"
+    "display"
+    "de"
+    "wm"
+    "wmtheme"
+    "theme"
+    "icons"
+    "font"
+    "cursor"
+    "terminal"
+    "terminalfont"
+    "cpu"
+    "gpu"
+    "memory"
+    "swap"
+    "disk"
+    "break"
+    "colors"
+  ];
+}
