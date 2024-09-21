@@ -58,14 +58,10 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-
-    #".bashrc".source = ./configs/.bashrc;
-    #".profile".source = ./configs/.profile;
   };
 
   home.shellAliases = {
     ll = "ls -lha";
-    g = "git";
   };
 
   # Home Manager can also manage your environment variables through
