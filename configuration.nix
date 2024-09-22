@@ -8,9 +8,7 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports = [
-    #inputs.home-manager.nixosModules.default
-  ];
+  imports = [];
 
   wsl.enable = true;
   wsl.defaultUser = "nixos";
@@ -32,8 +30,6 @@
       nixos = import ./home.nix;
     };
   };
-
-  vscode-remote-workaround.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

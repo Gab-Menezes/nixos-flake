@@ -13,5 +13,5 @@
     * `-p <pkgs>` or `nixpkgs#<pkgs>`
     * `--pure`
     * `--run <cmd>` or `-c <cmd>`
-* `systemctl --user start vscode-remote-workaround.service`
+* `systemctl --user <enable|start> auto-fix-vscode-server.service`
     * Fixes vscode-remote
