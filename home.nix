@@ -84,6 +84,11 @@
     # EDITOR = "emacs";
   };
 
+  # Change this value on re-installs
+  home.sessionPath = [
+    "/mnt/d/Arquivos de Programas/Microsoft VS Code/bin"
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
