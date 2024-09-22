@@ -9,12 +9,13 @@
 
 {
   imports = [
-    inputs.home-manager.nixosModules.default
+    #inputs.home-manager.nixosModules.default
   ];
 
   wsl.enable = true;
   wsl.defaultUser = "nixos";
   wsl.interop.includePath = false;
+  wsl.nativeSystemd = false;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.gc = {
@@ -31,6 +32,8 @@
       nixos = import ./home.nix;
     };
   };
+
+  vscode-remote-workaround.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

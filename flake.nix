@@ -6,6 +6,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vscode-remote-workaround = { 
+      url = "github:K900/vscode-remote-workaround/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    }; 
   };
 
   outputs = { self, nixpkgs, nixos-wsl, ... }@inputs: {
@@ -17,6 +21,7 @@
           nixos-wsl.nixosModules.default
           ./configuration.nix
           inputs.home-manager.nixosModules.default
+          inputs.vscode-remote-workaround.nixosModules.default
         ];
       };
     };
