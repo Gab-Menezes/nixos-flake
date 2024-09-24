@@ -74,7 +74,13 @@
   };
 
   home.shellAliases = {
-    ll = "ls -lha";
+    ls = "eza";
+    ll = "eza -alBhog";
+    grep = "rg";
+    h = "history";
+    find = "fd";
+    csw = "code /home/nixos/dev/nixos-flake";
+    sw = "sudo nixos-rebuild switch --flake /home/nixos/dev/nixos-flake";
   };
 
   # Home Manager can also manage your environment variables through
@@ -97,8 +103,8 @@
     # EDITOR = "emacs";
   };
 
-  # Change this value on re-installs
   home.sessionPath = [
+    # Change this value on re-installs
     "/mnt/d/Arquivos de Programas/Microsoft VS Code/bin"
   ];
 
@@ -123,5 +129,17 @@
   programs.htop = {
     enable = true;
     settings = import ./configs/htop.nix;
+  };
+  programs.eza = {
+    enable = true;
+    git = true;
+  };
+  programs.fd = {
+    enable = true;
+  };
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    silent = true;
   };
 }
