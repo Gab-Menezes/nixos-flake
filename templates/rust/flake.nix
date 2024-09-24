@@ -35,6 +35,9 @@
           pkgs.rust-analyzer-nightly
           pkgs.openssl
           pkgs.pkg-config
+
+          pkgs.clang_19
+          pkgs.llvmPackages_19.bintools
         ];
       };
     };

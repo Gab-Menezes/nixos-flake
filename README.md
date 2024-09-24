@@ -15,3 +15,5 @@
     * `--run <cmd>` or `-c <cmd>`
 * `systemctl --user <enable|start> auto-fix-vscode-server.service`
     * Fixes vscode-remote
+* `nix registry add self /home/nixos/dev/nixos-flake`
+    * Add this folder as a registry for templates
