@@ -51,6 +51,8 @@
 
     wget
     keychain
+    age
+    sops
 
     jq
     lf
@@ -109,7 +111,7 @@
   #  /etc/profiles/per-user/nixos/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "vim";
   };
 
   home.sessionPath = [

@@ -1,3 +1,5 @@
+* Copy and paste sops key at `/home/nixos/.config/sops/age/keys.txt`
+    * IDK exactly if `/run/secrets.d/age-keys.txt` needs to be managed manually
 * `sudo nixos-rebuild switch --flake .#nixos`
     * Rebuilds nix system and make it available
 * `sudo nixos-rebuild boot --flake .#nixos`

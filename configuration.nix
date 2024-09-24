@@ -8,7 +8,10 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports = [];
+  imports = [
+    inputs.home-manager.nixosModules.default
+    ./secrets/sops.nix
+  ];
 
   wsl.enable = true;
   wsl.defaultUser = "nixos";
