@@ -13,6 +13,7 @@
 
   # Enables the service that fixes vscode-server 
   services.vscode-server.enable = true;
+  services.vscode-server.enableFHS = true;
   
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -50,13 +51,18 @@
 
     wget
     keychain
+
     jq
     lf
     bottom
     ripgrep
     bat
     vim
+
     nil
+
+    # gnat14
+    # llvmPackages_19.libcxxClang
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -83,6 +89,7 @@
     cdsw = "cd /home/nixos/dev/nixos-flake";
     csw = "code /home/nixos/dev/nixos-flake";
     sw = "sudo nixos-rebuild switch --flake /home/nixos/dev/nixos-flake";
+    rcargo = "nix run nixpkgs#cargo -- ";
   };
 
   # Home Manager can also manage your environment variables through
