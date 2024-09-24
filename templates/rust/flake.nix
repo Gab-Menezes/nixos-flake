@@ -14,6 +14,9 @@
         inherit system; 
         overlays = [ fenix.overlays.default ];
       };
+      libPath = with pkgs; lib.makeLibraryPath [
+        "${pkgs.stdenv.cc.cc.lib}"
+      ];
     in 
     {
       devShells.${system}.default = pkgs.mkShell {
@@ -39,6 +42,8 @@
           pkgs.clang_19
           pkgs.llvmPackages_19.bintools
         ];
+
+        LD_LIBRARY_PATH = libPath;
       };
     };
 }
