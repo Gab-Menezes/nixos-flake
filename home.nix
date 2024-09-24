@@ -56,6 +56,7 @@
     ripgrep
     bat
     vim
+    nil
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -79,6 +80,7 @@
     grep = "rg";
     h = "history";
     find = "fd";
+    cdsw = "cd /home/nixos/dev/nixos-flake";
     csw = "code /home/nixos/dev/nixos-flake";
     sw = "sudo nixos-rebuild switch --flake /home/nixos/dev/nixos-flake";
   };
@@ -140,6 +142,5 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
-    silent = true;
   };
 }
