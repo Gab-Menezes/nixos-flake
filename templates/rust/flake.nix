@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     fenix = {
-      url = "github:nix-community/fenix";
+      url = "github:nix-community/fenix/monthly";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -16,7 +16,9 @@
       };
       libPath = with pkgs; lib.makeLibraryPath [
         "${pkgs.stdenv.cc.cc.lib}"
+        "${pkgs.openssl.out}"
       ];
+      clangVersion = "19";
     in 
     {
       devShells.${system}.default = pkgs.mkShell {
@@ -39,11 +41,13 @@
           pkgs.openssl
           pkgs.pkg-config
 
-          pkgs.clang_19
-          pkgs.llvmPackages_19.bintools
+          pkgs."clang_${clangVersion}"
+          pkgs."llvmPackages_${clangVersion}".bintools
+          pkgs.cmake
         ];
 
         LD_LIBRARY_PATH = libPath;
+        LIBCLANG_PATH = pkgs.lib.makeLibraryPath [ pkgs."llvmPackages_${clangVersion}".libclang.lib ];
       };
     };
 }
