@@ -1,3 +1,7 @@
+# Doc for nix-ld: https://github.com/nix-community/nix-ld
+# https://github.com/mcdonc/.nixconfig/blob/master/videos/pydev/script.rst
+# https://www.youtube.com/watch?v=7lVP4NJWJ9g
+# https://github.com/Mic92/dotfiles/blob/main/machines/modules/fhs-compat.nix
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -14,10 +18,12 @@
         inherit system; 
         overlays = [ fenix.overlays.default ];
       };
-      libPath = with pkgs; lib.makeLibraryPath [
-        "${pkgs.stdenv.cc.cc.lib}"
-        "${pkgs.openssl.out}"
-      ];
+
+      # libPath = with pkgs; lib.makeLibraryPath [
+      #   stdenv.cc.cc
+      #   openssl
+      # ];
+
       clangVersion = "19";
     in 
     {
@@ -46,7 +52,11 @@
           pkgs.cmake
         ];
 
-        LD_LIBRARY_PATH = libPath;
+        # LD_LIBRARY_PATH = libPath;
+        shellHook = ''
+          export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
+        '';
+
         LIBCLANG_PATH = pkgs.lib.makeLibraryPath [ pkgs."llvmPackages_${clangVersion}".libclang.lib ];
       };
     };
