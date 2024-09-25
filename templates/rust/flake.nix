@@ -52,6 +52,8 @@
           pkgs.cmake
         ];
 
+        # RUSTFLAGS = "-C link-arg=-Wl,-dynamic-linker,/lib64/ld-linux-x86-64.so.2";
+
         # LD_LIBRARY_PATH = libPath;
         shellHook = ''
           export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
