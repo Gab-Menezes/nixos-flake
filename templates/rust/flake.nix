@@ -42,6 +42,7 @@
           pkgs.cargo-flamegraph
           pkgs.cargo-valgrind
           pkgs.cargo-fuzz
+          pkgs.cargo-pgo
 
           pkgs.rust-analyzer-nightly
           pkgs.openssl
@@ -49,6 +50,7 @@
 
           pkgs."clang_${clangVersion}"
           pkgs."llvmPackages_${clangVersion}".bintools
+          pkgs."bolt_${clangVersion}"
           pkgs.cmake
         ];
 

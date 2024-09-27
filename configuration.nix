@@ -16,7 +16,7 @@
   wsl.enable = true;
   wsl.defaultUser = "nixos";
   wsl.interop.includePath = false;
-  wsl.nativeSystemd = false;
+  # wsl.nativeSystemd = false;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.gc = {
