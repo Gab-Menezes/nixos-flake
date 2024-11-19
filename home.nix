@@ -115,7 +115,7 @@
 
   home.sessionPath = [
     # Change this value on re-installs
-    "/mnt/d/Arquivos de Programas/Microsoft VS Code/bin"
+    "/mnt/c/Arquivos de Programas/Microsoft VS Code/bin"
   ];
 
   # Let Home Manager install and manage itself.
@@ -154,4 +154,6 @@
   programs.nix-index = {
     enable = true;
   };
+
+  nix.registry.self.flake = inputs.self;
 }
