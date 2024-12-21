@@ -18,13 +18,20 @@
   in
     {
       nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
+        wsl = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
             nixos-wsl.nixosModules.default
-            ./configuration.nix
+            ./wsl/configuration.nix
           ];
+        };
+        nixos = nixpkgs.lib.nixosSystem {
+          specialArgs = { 
+            inherit system; 
+            inherit inputs;
+          };
+          modules = [ ./nixos/configuration.nix ];
         };
       };
 

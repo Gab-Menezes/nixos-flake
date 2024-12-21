@@ -2,30 +2,37 @@
 
 {
   nixpkgs.config.allowUnfree = true;
-  dconf.settings."org/gnome/desktop/wm/preferences" = {
-    button-layout = "appmenu:minimize,maximize,close";
-    num-workspaces = 1;
-  };
-  dconf.settings."org/gnome/desktop/interface" = {
-    color-scheme = "prefer-dark";
-    enable-hot-corners = false;
-  };
-  dconf.settings."org/gnome/shell/keybindings" = {
-    show-screenshot-ui = [
-      "<Shift><Super>s"
-    ];
-  };
-  dconf.settings."org/gnome/mutter" = {
-    edge-tiling = true;
-  };
-  dconf.settings."org/gnome/desktop/session" = {
-    idle-delay = "uint32 0";
-  };
-  dconf.settings."org/gnome/settings-daemon/plugins/color" = {
-    night-light-schedule-automatic = false;
-  };
-  dconf.settings."org/gnome/settings-daemon/plugins/power" = {
-    sleep-inactive-ac-type = "nothing";
+  dconf.settings = {
+    "org/gnome/desktop/wm/preferences" = {
+      button-layout = "appmenu:minimize,maximize,close";
+      num-workspaces = 1;
+    };
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      enable-hot-corners = false;
+    };
+    "org/gnome/shell/keybindings" = {
+      show-screenshot-ui = [
+        "<Shift><Super>s"
+      ];
+    };
+    "org/gnome/mutter" = {
+      edge-tiling = true;
+    };
+    "org/gnome/desktop/peripherals/mouse" = {
+      accel-profile = "default";
+      speed = -0.52;
+    };
+
+    "org/gnome/desktop/session" = {
+      idle-delay = "uint32 0";
+    };
+    "org/gnome/settings-daemon/plugins/color" = {
+      night-light-schedule-automatic = false;
+    };
+    "org/gnome/settings-daemon/plugins/power" = {
+      sleep-inactive-ac-type = "nothing";
+    };
   };
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -75,6 +82,7 @@
     vim
     file
     patchelf
+    bitwarden-desktop
 
     nil
   ];
@@ -96,7 +104,6 @@
 
   home.sessionVariables = {
     EDITOR = "vim";
-    MYVAR = "abc";
   };
 
   # Home Manager can also manage your environment variables through
@@ -130,7 +137,7 @@
       find = "fd";
       cdsw = "cd ~/dev/nixos-flake";
       csw = "code ~/dev/nixos-flake";
-      sw = "sudo nixos-rebuild switch --flake ~/dev/nixos-flake/nixos";
+      sw = "sudo nixos-rebuild switch --flake ~/dev/nixos-flake#nixos";
       rcargo = "nix run nixpkgs#cargo -- ";
     };
     #bashrcExtra = import ./configs/bashrc.nix;
@@ -195,7 +202,16 @@
   programs.nix-index = {
     enable = true;
   };
-
+  programs.chromium = {
+    enable = true;
+    package = pkgs.brave;
+    # extensions = [
+    #   { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+    # ];
+    # commandLineArgs = [
+    #   "--disable-features=WebRtcAllowInputVolumeAdjustment"
+    # ];
+  };
 
   nix.registry.self.flake = inputs.self;
 }

@@ -10,7 +10,7 @@
 {
   imports = [
     inputs.home-manager.nixosModules.default
-    ./secrets/sops.nix
+    ../secrets/sops.nix
   ];
 
   wsl.enable = true;
