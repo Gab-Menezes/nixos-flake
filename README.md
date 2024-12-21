@@ -1,3 +1,4 @@
+* Copy and paste `/etc/nixos/hardware-configuration.nix` at `./nixos/hardware-configuration.nix`
 * Copy and paste sops key at `/home/nixos/.config/sops/age/keys.txt`
     * IDK exactly if `/run/secrets.d/age-keys.txt` needs to be managed manually
 * `sudo nixos-rebuild switch --flake .#nixos`
@@ -19,3 +20,19 @@
     * Fixes vscode-remote
 * `nix registry add self /home/nixos/dev/nixos-flake`
     * Add this folder as a registry for templates
+
+
+* Clean
+```
+nix-env --list-generations
+
+nix-collect-garbage  --delete-old
+
+nix-collect-garbage  --delete-generations 1 2 3
+
+# recommeneded to sometimes run as sudo to collect additional garbage
+sudo nix-collect-garbage -d
+
+# As a separation of concerns - you will need to run this command to clean out boot
+sudo /run/current-system/bin/switch-to-configuration boot
+``
