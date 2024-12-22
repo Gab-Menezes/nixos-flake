@@ -83,6 +83,7 @@
     file
     patchelf
     bitwarden-desktop
+    discord
 
     nil
   ];
@@ -212,9 +213,9 @@
       { id = "ponfpcnoihfmfllpaingbgckeeldkhle"; } # enhance for youtube
       { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # sponsorblock
     ];
-    # commandLineArgs = [
-    #   "--disable-features=WebRtcAllowInputVolumeAdjustment"
-    # ];
+  };
+  programs.alacritty = {
+    enable = true;
   };
 
   nix.registry.self.flake = inputs.self;
