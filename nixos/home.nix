@@ -205,9 +205,13 @@
   programs.chromium = {
     enable = true;
     package = pkgs.brave;
-    # extensions = [
-    #   { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
-    # ];
+    extensions = [
+      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+      { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
+      { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # dark reader
+      { id = "ponfpcnoihfmfllpaingbgckeeldkhle"; } # enhance for youtube
+      { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # sponsorblock
+    ];
     # commandLineArgs = [
     #   "--disable-features=WebRtcAllowInputVolumeAdjustment"
     # ];
