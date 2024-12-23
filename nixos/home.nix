@@ -149,7 +149,6 @@
     enable = true;
     extensions = with pkgs.vscode-extensions; [
       vscode-icons-team.vscode-icons
-      mskelton.one-dark-theme
       usernamehw.errorlens
       vadimcn.vscode-lldb
       fill-labs.dependi
@@ -162,7 +161,7 @@
       gruntfuggly.todo-tree
     ];
     userSettings = {
-      "workbench.colorTheme" = "One Dark";
+      "workbench.colorTheme" = "One Dark Pro Darker";
       "workbench.iconTheme" = "vscode-icons";
       "files.autoSave" = "afterDelay";
 
