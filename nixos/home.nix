@@ -83,6 +83,7 @@
     file
     patchelf
     lm_sensors
+    pkgs.linuxPackages_latest.perf
 
     discord
     spotify
