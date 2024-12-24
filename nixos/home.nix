@@ -144,6 +144,33 @@
     #bashrcExtra = import ./configs/bashrc.nix;
   };
 
+  programs.zsh = {
+    enable = true;
+    history = {
+      append = true;
+      extended = true;
+      ignoreDups = true;
+      share = true;
+      save = 30000;
+      size = 30000;
+    };
+    oh-my-zsh = {
+      enable = true;
+      theme = "robbyrussell";
+    };
+    shellAliases = {
+      ls = "eza";
+      ll = "eza -alBhog";
+      grep = "rg";
+      h = "history";
+      find = "fd";
+      cdsw = "cd ~/dev/nixos-flake";
+      csw = "code ~/dev/nixos-flake";
+      sw = "sudo nixos-rebuild switch --flake ~/dev/nixos-flake#nixos";
+      rcargo = "nix run nixpkgs#cargo -- ";
+    };
+    initExtra = import ../configs/zshrc.nix;
+  };
 
   programs.vscode = {
     enable = true;

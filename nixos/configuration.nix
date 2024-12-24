@@ -91,6 +91,7 @@
     isNormalUser = true;
     description = "Gabriel";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -107,6 +108,7 @@
   # Install firefox.
   programs.firefox.enable = true;
   programs.nix-ld.enable = true;
+  programs.zsh.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

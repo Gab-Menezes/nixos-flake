@@ -1,0 +1,5 @@
+''
+fastfetch
+
+unsetopt BEEP
+''
