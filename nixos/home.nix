@@ -84,6 +84,7 @@
     patchelf
     bitwarden-desktop
     discord
+    lm_sensors
 
     nil
   ];
