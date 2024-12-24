@@ -82,9 +82,11 @@
     vim
     file
     patchelf
-    bitwarden-desktop
-    discord
     lm_sensors
+
+    discord
+    spotify
+    bitwarden-desktop
 
     nil
   ];
