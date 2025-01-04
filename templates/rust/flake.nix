@@ -52,6 +52,7 @@
           pkgs."llvmPackages_${clangVersion}".bintools
           pkgs."bolt_${clangVersion}"
           pkgs.cmake
+          pkgs.rustfilt
         ];
 
         # RUSTFLAGS = "-C link-arg=-Wl,-dynamic-linker,/lib64/ld-linux-x86-64.so.2";

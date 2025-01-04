@@ -21,11 +21,12 @@
     };
     "org/gnome/desktop/peripherals/mouse" = {
       accel-profile = "default";
-      speed = -0.52;
+      speed = -0.80;
     };
 
     "org/gnome/desktop/session" = {
-      idle-delay = "uint32 0";
+      idle-delay = 0;
+      # idle-delay = "uint32 0";
     };
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-schedule-automatic = false;
@@ -84,10 +85,13 @@
     patchelf
     lm_sensors
     pkgs.linuxPackages_latest.perf
+    ida-free
+    ghidra
 
     discord
     spotify
     bitwarden-desktop
+    rustdesk
 
     nil
   ];
@@ -130,6 +134,7 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.dconf.enable = true;
 
   programs.bash = {
     enable = true;
@@ -144,6 +149,7 @@
       csw = "code ~/dev/nixos-flake";
       sw = "sudo nixos-rebuild switch --flake ~/dev/nixos-flake#nixos";
       rcargo = "nix run nixpkgs#cargo -- ";
+      preperf = "echo 65536 | sudo tee /proc/sys/kernel/perf_event_max_sample_rate && echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid && echo 0 | sudo tee /proc/sys/kernel/kptr_restrict";
     };
     #bashrcExtra = import ./configs/bashrc.nix;
   };
@@ -246,6 +252,10 @@
   };
   programs.alacritty = {
     enable = true;
+  };
+
+  services.easyeffects = {
+    enabled = true;
   };
 
   nix.registry.self.flake = inputs.self;

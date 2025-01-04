@@ -56,6 +56,7 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.displayManager.gdm.wayland = false;
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
@@ -168,6 +169,8 @@
     options = "--delete-older-than 7d";
   };
 
+  time.hardwareClockInLocalTime = true;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -196,4 +199,5 @@
   system.stateVersion = "24.11"; # Did you read the comment?
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [ "isolcpus=12,13" ];
 }
