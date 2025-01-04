@@ -255,7 +255,7 @@
   };
 
   services.easyeffects = {
-    enabled = true;
+    enable = true;
   };
 
   nix.registry.self.flake = inputs.self;
