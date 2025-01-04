@@ -87,6 +87,7 @@
     pkgs.linuxPackages_latest.perf
     ida-free
     ghidra
+    lsp-plugins
 
     discord
     spotify
