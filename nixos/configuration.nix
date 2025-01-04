@@ -147,10 +147,10 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  # Install firefox.
   programs.firefox.enable = true;
   programs.nix-ld.enable = true;
   programs.zsh.enable = true;
+  programs.dconf.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
