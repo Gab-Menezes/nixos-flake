@@ -60,6 +60,7 @@
     patchShebangs ./bin
     mkdir -p $out/bin
     cp -r ./bin $out/
+    cp ./Legal/AMDuProfEndUserLicenseAgreement.htm $out/
     '';
 
     meta = with lib; {
