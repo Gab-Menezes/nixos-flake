@@ -2,7 +2,6 @@
     stdenv,
     requireFile,
     lib,
-    autoPatchelfHook,
     pkgs
 }: stdenv.mkDerivation rec {
     pname = "amd-uprof";
@@ -19,37 +18,35 @@
         '';
     };
 
-    buildInputs = [
+    buildInputs = with pkgs; [
         autoPatchelfHook
-        stdenv.cc.cc
-        stdenv.cc.libc
 
-        pkgs.gcc
-        pkgs.glib
-        pkgs.freetype
-        pkgs.fontconfig
-        pkgs.numactl
-        pkgs.dbus
-        pkgs.coreutils
-        pkgs.ncurses5
-        pkgs.kmod
-        pkgs.libGLU
-        pkgs.elfutils
-        pkgs.libxkbcommon
-        pkgs.libarchive
-        pkgs.libglvnd
-        pkgs.rocmPackages.rocprofiler
+        gcc
+        glib
+        freetype
+        fontconfig
+        numactl
+        dbus
+        coreutils
+        ncurses5
+        kmod
+        libGLU
+        elfutils
+        libxkbcommon
+        libarchive
+        libglvnd
+        rocmPackages.rocprofiler
 
-        pkgs.xorg.libX11
-        pkgs.xorg.libXi
-        pkgs.xorg.libxcb
-        pkgs.xorg.xcbutilwm
-        pkgs.xorg.xcbutilimage
-        pkgs.xorg.xcbutilrenderutil
-        pkgs.xorg.xcbutilkeysyms
-        pkgs.xorg.libICE
-        pkgs.xorg.libXmu
-        pkgs.xorg.libSM
+        xorg.libX11
+        xorg.libXi
+        xorg.libxcb
+        xorg.xcbutilwm
+        xorg.xcbutilimage
+        xorg.xcbutilrenderutil
+        xorg.xcbutilkeysyms
+        xorg.libICE
+        xorg.libXmu
+        xorg.libSM
     ];
 
     postUnpack = ''
