@@ -181,6 +181,7 @@
       csw = "code ~/dev/nixos-flake";
       sw = "sudo nixos-rebuild switch --flake ~/dev/nixos-flake#nixos";
       rcargo = "nix run nixpkgs#cargo -- ";
+      preperf = "echo 65536 | sudo tee /proc/sys/kernel/perf_event_max_sample_rate && echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid && echo 0 | sudo tee /proc/sys/kernel/kptr_restrict";
     };
     initExtra = import ../configs/zshrc.nix;
   };
