@@ -1,7 +1,9 @@
 { config, pkgs, inputs, ... }:
 
 {
+  nixpkgs.overlays = [inputs.fenix.overlays.default];
   nixpkgs.config.allowUnfree = true;
+
   dconf.settings = {
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "appmenu:minimize,maximize,close";
@@ -198,8 +200,9 @@
       mhutchie.git-graph
       oderwat.indent-rainbow
       jnoortheen.nix-ide
-      rust-lang.rust-analyzer
+      rust-lang.rust-analyzer-nightly
       gruntfuggly.todo-tree
+      zhuangtongfa.material-theme
     ];
     userSettings = {
       "workbench.colorTheme" = "One Dark Pro Darker";
