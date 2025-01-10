@@ -148,7 +148,7 @@
   systemd.services."autovt@tty1".enable = false;
 
   programs.firefox.enable = true;
-  programs.nix-ld.enable = true;
+  # programs.nix-ld.enable = true;
   programs.zsh.enable = true;
   programs.dconf.enable = true;
 
@@ -198,6 +198,6 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_testing;
   boot.kernelParams = [ "isolcpus=12,13" ];
 }
