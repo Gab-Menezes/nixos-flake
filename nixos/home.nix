@@ -1,7 +1,6 @@
 { config, pkgs, inputs, ... }:
 
 {
-  nixpkgs.overlays = [inputs.fenix.overlays.default];
   nixpkgs.config.allowUnfree = true;
 
   dconf.settings = {
@@ -195,7 +194,7 @@
       mhutchie.git-graph
       oderwat.indent-rainbow
       jnoortheen.nix-ide
-      rust-lang.rust-analyzer-nightly
+      rust-lang.rust-analyzer
       gruntfuggly.todo-tree
       zhuangtongfa.material-theme
     ];
