@@ -73,27 +73,22 @@
     # '')
 
     wget
-    keychain
     age
     sops
 
     jq
-    lf
     bottom
     ripgrep
-    bat
     vim
     file
     patchelf
     lm_sensors
     pkgs.linuxPackages_latest.perf
     ida-free
-    ghidra
     lsp-plugins
 
     discord
     spotify
-    bitwarden-desktop
     rustdesk
 
     nil
