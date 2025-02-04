@@ -2,6 +2,7 @@
 
 {
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.cudaSupport = true;
 
   dconf.settings = {
     "org/gnome/desktop/wm/preferences" = {
@@ -74,6 +75,7 @@
     wget
     age
     sops
+    cacert
 
     jq
     bottom
@@ -197,6 +199,7 @@
       rust-lang.rust-analyzer
       gruntfuggly.todo-tree
       zhuangtongfa.material-theme
+      # github.copilot
     ];
     userSettings = {
       "workbench.colorTheme" = "One Dark Pro Darker";
@@ -212,6 +215,8 @@
       "nix.enableLanguageServer" = true;
       "window.zoomLevel" = 2;
     };
+    # package = pkgs.vscode-fhs;
+    # mutableExtensionsDir = true;
   };
   programs.git = {
     enable = true;

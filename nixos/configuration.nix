@@ -5,6 +5,9 @@
 { config, pkgs, inputs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.cudaSupport = true;
+  
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -148,12 +151,9 @@
   systemd.services."autovt@tty1".enable = false;
 
   programs.firefox.enable = true;
-  # programs.nix-ld.enable = true;
+  programs.nix-ld.enable = true;
   programs.zsh.enable = true;
   programs.dconf.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

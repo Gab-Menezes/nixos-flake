@@ -30,7 +30,6 @@
           pkgs.cargo-valgrind
           pkgs.cargo-fuzz
           pkgs.cargo-pgo
-          pkgs.rustfilt
 
           pkgs.openssl
           pkgs.pkg-config
