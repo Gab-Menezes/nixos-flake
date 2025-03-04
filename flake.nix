@@ -44,6 +44,10 @@
           description = "R shell dev environment";
           path = ./templates/r;
         };
+        java = {
+          description = "Java shell dev environment";
+          path = ./templates/java;
+        };
       };
     };
 }
