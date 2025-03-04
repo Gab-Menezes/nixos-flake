@@ -18,6 +18,10 @@
           pkgs.rPackages.tibble
           pkgs.rPackages.printr
           pkgs.rPackages.tidyverse
+          pkgs.rPackages.tidymodels
+          pkgs.rPackages.kknn
+          pkgs.rPackages.mlbench
+          pkgs.rPackages.GGally
         ]; 
       };
     in 
