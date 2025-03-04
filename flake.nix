@@ -40,6 +40,10 @@
           description = "Rust shell dev environment";
           path = ./templates/rust;
         };
+        R = {
+          description = "R shell dev environment";
+          path = ./templates/R;
+        };
       };
     };
 }
