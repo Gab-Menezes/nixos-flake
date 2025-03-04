@@ -87,6 +87,7 @@
     pkgs.linuxPackages_latest.perf
     ida-free
     lsp-plugins
+    unzip
 
     discord
     spotify
