@@ -265,7 +265,7 @@
   programs.ghostty = {
     enable = true;
     enableZshIntegration = true;
-    settings = import ../configs/ghostty.nix;
+    settings = import ../configs/ghostty/ghostty.nix;
   };
 
   services.easyeffects = {
