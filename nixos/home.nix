@@ -105,6 +105,7 @@
     # ".screenrc".source = dotfiles/screenrc;
 
     ".config/easyeffects/input/pro-x.json".source = ../configs/pro-x.json;
+    ".config/ghostty/bloom.glsl".source = ../configs/ghostty/bloom.glsl;
 
 
     # # You can also set the file content immediately.
@@ -266,6 +267,7 @@
     enable = true;
     enableZshIntegration = true;
     settings = import ../configs/ghostty/ghostty.nix;
+    themes = import ../configs/ghostty/themes.nix;
   };
 
   services.easyeffects = {

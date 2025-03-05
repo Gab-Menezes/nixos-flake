@@ -1,4 +1,5 @@
 {
+  custom-shader = "./bloom.glsl";
   cursor-click-to-move = true;
   keybind = [
     "ctrl+t=new_tab"
@@ -45,4 +46,6 @@
     "ctrl+alt+left=unbind"
     "ctrl+alt+right=unbind"
   ];
+
+  theme = "Custom";
 }
