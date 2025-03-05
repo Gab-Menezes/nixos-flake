@@ -10,7 +10,7 @@
 {
   imports = [
     inputs.home-manager.nixosModules.default
-    ./secrets/sops.nix
+    ../secrets/sops.nix
   ];
 
   wsl.enable = true;
@@ -35,6 +35,7 @@
   };
 
   programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [];
 
   time.timeZone = "America/Sao_Paulo";
 

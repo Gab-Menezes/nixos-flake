@@ -18,13 +18,20 @@
   in
     {
       nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
+        wsl = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
             nixos-wsl.nixosModules.default
-            ./configuration.nix
+            ./wsl/configuration.nix
           ];
+        };
+        nixos = nixpkgs.lib.nixosSystem {
+          specialArgs = { 
+            inherit system; 
+            inherit inputs;
+          };
+          modules = [ ./nixos/configuration.nix ];
         };
       };
 
@@ -33,7 +40,14 @@
           description = "Rust shell dev environment";
           path = ./templates/rust;
         };
+        r = {
+          description = "R shell dev environment";
+          path = ./templates/r;
+        };
+        java = {
+          description = "Java shell dev environment";
+          path = ./templates/java;
+        };
       };
     };
 }
-

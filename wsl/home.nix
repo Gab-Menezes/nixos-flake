@@ -87,9 +87,9 @@
     grep = "rg";
     h = "history";
     find = "fd";
-    cdsw = "cd /home/nixos/dev/nixos-flake";
-    csw = "code /home/nixos/dev/nixos-flake";
-    sw = "sudo nixos-rebuild switch --flake /home/nixos/dev/nixos-flake";
+    cdsw = "cd ~/dev/nixos-flake";
+    csw = "code ~/dev/nixos-flake";
+    sw = "sudo nixos-rebuild switch --flake ~/dev/nixos-flake#wsl";
     rcargo = "nix run nixpkgs#cargo -- ";
   };
 

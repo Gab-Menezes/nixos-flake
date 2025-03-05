@@ -1,3 +1,4 @@
+* Copy and paste `/etc/nixos/hardware-configuration.nix` at `./nixos/hardware-configuration.nix`
 * Copy and paste sops key at `/home/nixos/.config/sops/age/keys.txt`
     * IDK exactly if `/run/secrets.d/age-keys.txt` needs to be managed manually
 * `sudo nixos-rebuild switch --flake .#nixos`
@@ -19,3 +20,36 @@
     * Fixes vscode-remote
 * `nix registry add self /home/nixos/dev/nixos-flake`
     * Add this folder as a registry for templates
+
+
+* Bootstrap
+```
+1. sudo nano /etc/nixos/configuration.nix
+2. Add: nix.settings.experimental-features = [ "nix-command" "flakes" ];
+3. sudo nixos-rebuild switch
+4. nix shell nixpkgs#git nixpkgs#bitwarden
+5. bitwarden
+6. mkdir -p ~/.config/sops/age && nano ~/.config/sops/age/keys.txt
+8. cd && mkdir dev && cd dev
+9. git clone https://github.com/Gab-Menezes/nixos-flake.git && cd nixos-flake
+10. git checkout unify
+11. rm nixos/hardware-configuration.nix
+12. sudo cp /etc/nixos/hardware-configuration.nix ./nixos && sudo chown gabriel:users ./nixos/hardware-configuration.nix
+13. sudo nixos-rebuild boot --flake .#nixos
+14. git remote set-url origin git@github.com:Gab-Menezes/nixos-flake.git
+```
+
+* Clean
+```
+nix-env --list-generations
+
+nix-collect-garbage  --delete-old
+
+nix-collect-garbage  --delete-generations 1 2 3
+
+# recommeneded to sometimes run as sudo to collect additional garbage
+sudo nix-collect-garbage -d
+
+# As a separation of concerns - you will need to run this command to clean out boot
+sudo /run/current-system/bin/switch-to-configuration boot
+``
