@@ -262,6 +262,11 @@
   programs.alacritty = {
     enable = true;
   };
+  programs.ghostty = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = import ../configs/ghostty.nix;
+  };
 
   services.easyeffects = {
     enable = true;
