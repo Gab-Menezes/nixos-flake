@@ -109,7 +109,7 @@
 
     ".config/easyeffects/input/pro-x.json".source = ../configs/pro-x.json;
     ".config/ghostty/bloom.glsl".source = ../configs/ghostty/bloom.glsl;
-
+    ".config/waybar/bin".source = ../configs/hypr/waybar/bin;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -284,7 +284,8 @@
   };
   programs.waybar = {
     enable = true;
-    settings.main = import ../configs/hypr/waybar.nix;
+    settings.main = import ../configs/hypr/waybar/waybar.nix;
+    style = import ../configs/hypr/waybar/style.nix;
   };
   wayland.windowManager.hyprland = {
     enable = true;
