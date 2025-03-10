@@ -1,5 +1,5 @@
 {
-  custom-shader = "./bloom.glsl";
+  #custom-shader = "./bloom.glsl";
   cursor-click-to-move = true;
   keybind = [
     "ctrl+t=new_tab"
@@ -48,4 +48,5 @@
   ];
 
   theme = "Custom";
+  background-opacity = 0.8;
 }

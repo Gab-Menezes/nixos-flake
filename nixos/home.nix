@@ -80,6 +80,8 @@
 
     jq
     bottom
+    btop
+    nvtopPackages.nvidia
     ripgrep
     vim
     file
@@ -280,6 +282,11 @@
   #environment.sessionVariables.NIXOS_OZONE_WL = "1";
   programs.wofi = {
     enable = true;
+  };
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi-wayland;
+    extraConfig = ../configs/hypr/rofi/rofi.nix;
   };
   programs.waybar = {
     enable = true;
