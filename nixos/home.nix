@@ -287,7 +287,7 @@
   };
   wayland.windowManager.hyprland = {
     enable = true;
-    settings = import ../configs/ghostty/hyprland.nix;
+    settings = import ../configs/hyprland.nix;
   };
 
   services.easyeffects = {
