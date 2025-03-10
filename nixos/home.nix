@@ -111,6 +111,7 @@
     ".config/easyeffects/input/pro-x.json".source = ../configs/pro-x.json;
     ".config/ghostty/bloom.glsl".source = ../configs/ghostty/bloom.glsl;
     ".config/waybar/bin".source = ../configs/hypr/waybar/bin;
+    ".config/rofi/theme.rasi".source = ../configs/hypr/rofi/theme.rasi;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -287,7 +288,7 @@
     enable = true;
     package = pkgs.rofi-wayland;
     extraConfig = import ../configs/hypr/rofi/rofi.nix;
-    theme = import ../configs/hypr/rofi/theme.nix;
+    # theme = import ../configs/hypr/rofi/theme.nix;
   };
   programs.waybar = {
     enable = true;
