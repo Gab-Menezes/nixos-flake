@@ -23,24 +23,25 @@
   "height" = 0;
   "modules-left" = [
     "hyprland/workspaces"
-    "backlight"
+    # "backlight"
     "bluetooth"
     "network"
+    "disk"
+    "memory"
+    "cpu"
   ];
   "fixed-center" = true;
   "modules-center" = [
-    "memory"
     # "custom/updates"
     "clock"
     # "custom/notifications"
-    "disk"
   ];
   "modules-right" = [
     "tray"
     "custom/player"
     "pulseaudio"
     "pulseaudio#microphone"
-    "battery"
+    # "battery"
     "custom/reboot"
     "custom/shutdown"
   ];
@@ -61,8 +62,7 @@
   };
   "clock" = {
     "interval" = 60;
-    # "format" = " { =%A; %B %d [%H =%M]}";
-    "format" = " {:%A; %B %d [%H:%M]}";
+    "format" = " {:%A; %B %d [%H:%M]}";
     "tooltip-format" = "<tt><small>{calendar}</small></tt>";
     "calendar" = {
       "mode" = "year";
@@ -75,39 +75,39 @@
       };
     };
   };
-  "backlight" = {
-    "device" = "intel_backlight";
-    "format" = "{icon} {percent}%";
-    "format-icons" = [
-      ""
-      ""
-      ""
-    ];
-  };
-  "battery" = {
-    "interval" = 1;
-    "states" = {
-      "good" = 100;
-      "warning" = 30;
-      "critical" = 20;
-    };
-    "format" = "{icon} {capacity}%";
-    "format-charging" = " {capacity}%";
-    "format-plugged" = " {capacity}%";
-    "format-icons" = [
-      ""
-      ""
-      ""
-      ""
-      ""
-      ""
-      ""
-      ""
-      ""
-      ""
-      ""
-    ];
-  };
+  # "backlight" = {
+  #   "device" = "intel_backlight";
+  #   "format" = "{icon} {percent}%";
+  #   "format-icons" = [
+  #     ""
+  #     ""
+  #     ""
+  #   ];
+  # };
+  # "battery" = {
+  #   "interval" = 1;
+  #   "states" = {
+  #     "good" = 100;
+  #     "warning" = 30;
+  #     "critical" = 20;
+  #   };
+  #   "format" = "{icon} {capacity}%";
+  #   "format-charging" = " {capacity}%";
+  #   "format-plugged" = " {capacity}%";
+  #   "format-icons" = [
+  #     ""
+  #     ""
+  #     ""
+  #     ""
+  #     ""
+  #     ""
+  #     ""
+  #     ""
+  #     ""
+  #     ""
+  #     ""
+  #   ];
+  # };
   "pulseaudio" = {
     "format" = "{icon} {volume}%";
     "tooltip" = false;
@@ -131,7 +131,7 @@
   };
   "pulseaudio#microphone" = {
     "format" = "{format_source}";
-    "format-source" = " {volume}%";
+    "format-source" = " {volume}%";
     "format-source-muted" = " Muted";
     "on-click" = "wpctl set-mute @DEFAULT_SOURCE@ toggle";
     "on-scroll-up" = "wpctl set-volume @DEFAULT_SOURCE@ 5%+ --limit 1.15";
@@ -140,7 +140,7 @@
   "network" = {
     "format-disconnected" = "Disconnected";
     "format-wifi" = " {essid}";
-    "format-ethernet" = " {ipaddr}/{cidr}";
+    "format-ethernet" = " {ipaddr}/{cidr}  {bandwidthUpBytes} 󰁅 {bandwidthDownBytes}";
     "tooltip-format" = " {signalStrength}";
     "on-click" = "wifimenu";
   };
@@ -157,6 +157,10 @@
     "interval" = 60;
     "format" = " {used}G";
     "tooltip-format" = "{used} / {total} G";
+  };
+  "cpu" = {
+    "interval" = 60;
+    "format" = " {usage}% ({max_frequency}GHz)";
   };
   "disk" = {
     "interval" = 6000;
@@ -194,7 +198,7 @@
       "on-click" = "shutdown now";
   };
   "custom/reboot" = {
-      "format" = "󰜉";
+      "format" = "";
       "tooltip" = false;
       "on-click" = "reboot";
   };

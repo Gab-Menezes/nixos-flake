@@ -83,6 +83,7 @@ tooltip {
 #workspaces,
 #tray,
 #memory,
+#cpu,
 #disk,
 #backlight,
 
@@ -175,8 +176,14 @@ tooltip {
     margin-left: 5px;
 }
 
+#cpu {
+    color: #cba6f7;
+    border-radius: 7px 7px 7px 7px;
+    margin-left: 5px;
+}
+
 #disk {
-    color: #f9e2af;
+    color: #a6e3a1;
     border-radius: 7px 7px 7px 7px;
     margin-left: 5px;
 }
