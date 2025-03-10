@@ -30,9 +30,9 @@
   "fixed-center" = true;
   "modules-center" = [
     "memory"
-    "custom/updates"
+    # "custom/updates"
     "clock"
-    "custom/notifications"
+    # "custom/notifications"
     "disk"
   ];
   "modules-right" = [
@@ -41,6 +41,8 @@
     "pulseaudio"
     "pulseaudio#microphone"
     "battery"
+    "custom/reboot"
+    "custom/shutdown"
   ];
   "hyprland/window" = {
     "format" = "{}";
@@ -59,7 +61,8 @@
   };
   "clock" = {
     "interval" = 60;
-    "format" = " { =%A; %B %d [%H =%M]}";
+    # "format" = " { =%A; %B %d [%H =%M]}";
+    "format" = " {:%A; %B %d [%H:%M]}";
     "tooltip-format" = "<tt><small>{calendar}</small></tt>";
     "calendar" = {
       "mode" = "year";
@@ -136,7 +139,8 @@
   };
   "network" = {
     "format-disconnected" = "Disconnected";
-    "format-wifi" = "  {essid}";
+    "format-wifi" = " {essid}";
+    "format-ethernet" = " {ipaddr}/{cidr}";
     "tooltip-format" = " {signalStrength}";
     "on-click" = "wifimenu";
   };
@@ -159,28 +163,39 @@
     "format" = " {percentage_used}%";
     "tooltip-format" = "{used} used out of {total} on {path} ";
   };
-  "custom/updates" = {
-    "format" = "{}";
-    "tooltip" = false;
-    "interval" = 1200;
-    "exec" = "$HOME/.config/waybar/bin/updatecheck";
-    "return-type" = "json";
-    "exec-if" = "exit 0";
-    "signal" = 8;
-  };
-  "custom/notifications" = {
-    "format" = "{}";
-    "exec" = "$HOME/.config/waybar/bin/not-dnd -j";
-    "on-click" = "$HOME/.config/waybar/bin/not-dnd";
-    "return-type" = "json";
-    "interval" = "once";
-    "signal" = 2;
-  };
+  # "custom/updates" = {
+  #   "format" = "{}";
+  #   "tooltip" = false;
+  #   "interval" = 1200;
+  #   "exec" = "$HOME/.config/waybar/bin/updatecheck";
+  #   "return-type" = "json";
+  #   "exec-if" = "exit 0";
+  #   "signal" = 8;
+  # };
+  # "custom/notifications" = {
+  #   "format" = "{}";
+  #   "exec" = "$HOME/.config/waybar/bin/not-dnd -j";
+  #   "on-click" = "$HOME/.config/waybar/bin/not-dnd";
+  #   "return-type" = "json";
+  #   "interval" = "once";
+  #   "signal" = 2;
+  # };
   "custom/player" = {
     "format" = "󰎆 {}";
     "interval" = 5;
     "exec" = "$HOME/.config/waybar/bin/playerinfo";
     "max-length" = 40;
     "tooltip" = true;
+  };
+
+  "custom/shutdown" = {
+      "format" = "";
+      "tooltip" = false;
+      "on-click" = "shutdown now";
+  };
+  "custom/reboot" = {
+      "format" = "󰜉";
+      "tooltip" = false;
+      "on-click" = "reboot";
   };
 }

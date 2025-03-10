@@ -78,6 +78,8 @@ tooltip {
 #custom-notifications,
 #custom-updates,
 #custom-player,
+#custom-shutdown,
+#custom-reboot,
 #workspaces,
 #tray,
 #memory,
@@ -146,11 +148,25 @@ tooltip {
 }
 
 #custom-player {
- color: #cba6f7;
- border-radius: 7px 7px 7px 7px;
- padding-left: 4px;
- margin-left:  5px;
- margin-right: 5px;
+	color: #cba6f7;
+	border-radius: 7px 7px 7px 7px;
+	padding-left: 4px;
+	margin-left:  5px;
+	margin-right: 5px;
+}
+
+#custom-reboot {
+	color: #f0ca73;
+	border-radius: 7px 7px 7px 7px;
+	margin-left:  5px;
+	margin-right: 5px;
+}
+
+#custom-shutdown {
+	color: #f16c75;
+	border-radius: 7px 7px 7px 7px;
+	margin-left:  5px;
+	margin-right: 5px;
 }
 
 #memory {
