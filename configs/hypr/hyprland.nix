@@ -101,7 +101,11 @@
 
       follow_mouse = 2;
 
-      sensitivity = -0.5;
+      sensitivity = -0.7;
+  };
+
+  cursor = {
+    default_monitor = "DP-5";
   };
 
   exec-once = [
