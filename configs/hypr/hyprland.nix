@@ -1,9 +1,10 @@
 {
   "$mod" = "SUPER";
   "$terminal" = "ghostty";
-  "$menu" = "wofi --show drun";
+  "$menu" = "rofi -show drun";
+  "$window" = "rofi -show window";
   "$browser" = "brave";
-  "$file_manager" = "yazi";
+  "$file_manager" = "$terminal -e yazi";
 
   general = {
       gaps_in = 5;
@@ -128,7 +129,8 @@
     "$mod, RETURN, exec, $terminal"
     "$mod, B, exec, $browser"
     "$mod, SPACE, exec, $menu"
-    "$mod, E, exec, $terminal -e $file_manager"
+    "$mod, Q, exec, $window"
+    "$mod, E, exec, $file_manager"
 
     "$mod SHIFT, left, movewindow, l"
     "$mod SHIFT, right, movewindow, r"
