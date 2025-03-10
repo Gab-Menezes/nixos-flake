@@ -4,39 +4,39 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.cudaSupport = true;
 
-  dconf.settings = {
-    "org/gnome/desktop/wm/preferences" = {
-      button-layout = "appmenu:minimize,maximize,close";
-      num-workspaces = 2;
-    };
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-      enable-hot-corners = false;
-    };
-    "org/gnome/shell/keybindings" = {
-      show-screenshot-ui = [
-        "<Shift><Super>s"
-      ];
-    };
-    "org/gnome/mutter" = {
-      edge-tiling = true;
-    };
-    "org/gnome/desktop/peripherals/mouse" = {
-      accel-profile = "default";
-      speed = -0.80;
-    };
+  # dconf.settings = {
+  #   "org/gnome/desktop/wm/preferences" = {
+  #     button-layout = "appmenu:minimize,maximize,close";
+  #     num-workspaces = 2;
+  #   };
+  #   "org/gnome/desktop/interface" = {
+  #     color-scheme = "prefer-dark";
+  #     enable-hot-corners = false;
+  #   };
+  #   "org/gnome/shell/keybindings" = {
+  #     show-screenshot-ui = [
+  #       "<Shift><Super>s"
+  #     ];
+  #   };
+  #   "org/gnome/mutter" = {
+  #     edge-tiling = true;
+  #   };
+  #   "org/gnome/desktop/peripherals/mouse" = {
+  #     accel-profile = "default";
+  #     speed = -0.80;
+  #   };
 
-    "org/gnome/desktop/session" = {
-      idle-delay = 0;
-      # idle-delay = "uint32 0";
-    };
-    "org/gnome/settings-daemon/plugins/color" = {
-      night-light-schedule-automatic = false;
-    };
-    "org/gnome/settings-daemon/plugins/power" = {
-      sleep-inactive-ac-type = "nothing";
-    };
-  };
+  #   "org/gnome/desktop/session" = {
+  #     idle-delay = 0;
+  #     # idle-delay = "uint32 0";
+  #   };
+  #   "org/gnome/settings-daemon/plugins/color" = {
+  #     night-light-schedule-automatic = false;
+  #   };
+  #   "org/gnome/settings-daemon/plugins/power" = {
+  #     sleep-inactive-ac-type = "nothing";
+  #   };
+  # };
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -94,6 +94,8 @@
     rustdesk
 
     nil
+
+    font-awesome
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -265,6 +267,69 @@
     enableZshIntegration = true;
     settings = import ../configs/ghostty/ghostty.nix;
     themes = import ../configs/ghostty/themes.nix;
+  };
+
+  #environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  programs.wofi = {
+    enable = true;
+  };
+  programs.waybar = {
+    enable = true;
+  };
+  wayland.windowManager.hyprland = {
+    enable = true;
+    settings = {
+      "$mod" = "SUPER";
+      "$terminal" = "ghostty";
+      "$menu" = "wofi --show drun";
+      "$browser" = "brave";
+
+      exec-once = [
+        "[workspace 2 silent] $terminal"
+        "[workspace 2 silent] $browser"
+        "waybar"
+      ];
+
+      monitor = [
+        "HDMI-A-2, preferred, 0x0, 1, transform, 1"
+        "DP-5, 2560x1440@144, 1080x540, 1"
+      ];
+
+      bindm = [
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
+      ];
+
+      bind = [
+        "$mod, Q, exec, $terminal"
+        "$mod, B, exec, $browser"
+        "$mod, SPACE, exec, $menu"
+
+        "$mod, left, movefocus, l"
+        "$mod, right, movefocus, r"
+        "$mod, up, movefocus, u"
+        "$mod, down, movefocus, d"
+        
+        "$mod, mouse_down, workspace, e+1"
+        "$mod, mouse_up, workspace, e-1"
+        
+        "$mod, W, killactive"
+        "$mod, V, togglefloating"
+        "$mod, S, togglespecialworkspace"
+        "$mod, F, fullscreen"
+      ] ++ (
+          # workspaces
+          # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+          builtins.concatLists (builtins.genList (i:
+              let ws = i + 1;
+              in [
+                "$mod, code:1${toString i}, workspace, ${toString ws}"
+                "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+              ]
+            )
+            9)
+        );
+    };
   };
 
   services.easyeffects = {
