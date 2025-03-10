@@ -286,7 +286,8 @@
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
-    extraConfig = ../configs/hypr/rofi/rofi.nix;
+    extraConfig = import ../configs/hypr/rofi/rofi.nix;
+    theme = import ../configs/hypr/rofi/theme.nix;
   };
   programs.waybar = {
     enable = true;
