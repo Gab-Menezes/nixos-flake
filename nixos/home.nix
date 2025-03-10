@@ -284,7 +284,7 @@
   };
   programs.waybar = {
     enable = true;
-    settings = import ../configs/hypr/waybar.nix;
+    settings.main = import ../configs/hypr/waybar.nix;
   };
   wayland.windowManager.hyprland = {
     enable = true;
