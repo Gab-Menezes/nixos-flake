@@ -1,8 +1,7 @@
 {
   "$mod" = "SUPER";
   "$terminal" = "ghostty";
-  "$menu" = "rofi -show drun";
-  "$window" = "rofi -show window";
+  "$menu" = "rofi -show combi";
   "$browser" = "brave";
   "$file_manager" = "$terminal -e yazi";
 
@@ -126,10 +125,10 @@
   ];
 
   bind = [
+    "$mod, SUPER_L, overview:toggle"
     "$mod, RETURN, exec, $terminal"
     "$mod, B, exec, $browser"
     "$mod, SPACE, exec, $menu"
-    "$mod, Q, exec, $window"
     "$mod, E, exec, $file_manager"
 
     "$mod SHIFT, left, movewindow, l"

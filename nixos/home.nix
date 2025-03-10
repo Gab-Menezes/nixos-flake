@@ -282,7 +282,7 @@
   #environment.sessionVariables.NIXOS_OZONE_WL = "1";
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
+    package = pkgs.rofi-wayland.override { plugins = [ pkgs.rofi-calc ]; };
     extraConfig = import ../configs/hypr/rofi/rofi.nix;
     theme = ../configs/hypr/rofi/theme.rasi;
   };
@@ -294,6 +294,9 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = import ../configs/hypr/hyprland.nix;
+    plugins = [
+      pkgs.hyprlandPlugins.hyprspace
+    ];
   };
 
   services.easyeffects.enable = true;
