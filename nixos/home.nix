@@ -92,6 +92,7 @@
     lsp-plugins
     unzip
     playerctl
+    hyprshot
 
     discord
     spotify
@@ -282,7 +283,12 @@
   #environment.sessionVariables.NIXOS_OZONE_WL = "1";
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland.override { plugins = [ pkgs.rofi-calc ]; };
+    package = pkgs.rofi-wayland.override { 
+      plugins = [ 
+        pkgs.rofi-calc
+        pkgs.rofi-screenshot
+      ]; 
+    };
     extraConfig = import ../configs/hypr/rofi/rofi.nix;
     theme = ../configs/hypr/rofi/theme.rasi;
   };
@@ -300,6 +306,7 @@
   };
 
   services.easyeffects.enable = true;
+  services.swaync.enable = true;
   # services.playerctld.enable = true;
 
   nix.registry.self.flake = inputs.self;

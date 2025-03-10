@@ -149,6 +149,8 @@
     "$mod, F, fullscreen"
 
     "$mod, Tab, cyclenext,"
+
+    "SUPER_SHIFT, S, exec, hyprshot -m region --clipboard-only"
   ] ++ (
       builtins.concatLists (builtins.genList (i:
           let ws = i + 1;

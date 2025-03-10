@@ -26,7 +26,7 @@
 }
 
 window {
-   background-color: #1e1e2e;
+   background-color: @dark1;
    width: 30%;
    padding: 10px;
    fullscreen: false;
@@ -36,20 +36,20 @@ window {
 }
 
 mainbox {
-   background-color: #1e1e2e;
+   background-color: @dark1;
    spacing:5px;
    border-radius: 20px;
 }
 
 message {
    padding: 10px 10px;
-   background-color: #1e1e2e;
+   background-color: @dark1;
    border-radius: 20px;
 }
 
 textbox {
    text-color: @dark5;
-   background-color: #1e1e2e;
+   background-color: @dark1;
    border-radius: 20px;
 }
 
@@ -60,7 +60,7 @@ listview {
    spacing: 0px;
    padding: 5px 0px 0px 0px;
    margin: 1px 1px 1px 1px;
-   background-color: #1e1e2e;
+   background-color: @dark1;
    border-radius: 20px;
 }
 
@@ -71,18 +71,18 @@ element {
 
 element normal.normal {
    padding: 0px 15px;
-   background-color: #1e1e2e;
+   background-color: @dark1;
    text-color: @dark3;
    border-radius: 20px;
 }
 
 element normal.urgent {
-   background-color: #1e1e2e;
+   background-color: @dark1;
    text-color: @urgent-color;
 }
 
 element normal.active {
-   background-color: #1e1e2e;
+   background-color: @dark1;
    text-color: @dark5;
    border-radius: 20px;
 }
@@ -94,60 +94,60 @@ element selected.normal {
 }
 
 element selected.urgent {
-    background-color: #1e1e2e;
-    text-color:       #1e1e2e;
+    background-color: @dark1;
+    text-color:       @dark1;
     border-radius: 20px;
 }
 
 element selected.active {
-    background-color: #1e1e2e;
+    background-color: @dark1;
     text-color:       @dark5;
     border-radius: 20px;
 }
 
 element alternate.normal {
-    background-color: #1e1e2e;
+    background-color: @dark1;
     text-color:       @dark4;
     border-radius: 20px;
 }
 
 element alternate.urgent {
-    background-color: #1e1e2e;
+    background-color: @dark1;
     text-color:       @urgent-color;
     border-radius: 20px;
 }
 
 element alternate.active {
-    background-color: #1e1e2e;
-    text-color:       #1e1e2e;
+    background-color: @dark1;
+    text-color:       @dark1;
     border-radius: 20px;
 }
 
 scrollbar {
-   background-color: #1e1e2e;
-   handle-color: #1e1e2e;
+   background-color: @dark1;
+   handle-color: @dark1;
    handle-width: 0px;
    border-radius: 20px;
 }
 
 mode-switcher {
-   background-color: #1e1e2e;
+   background-color: @dark1;
    border-radius: 20px;
 }
 
 button {
-   background-color: #1e1e2e;
+   background-color: @dark1;
    text-color:       @dark5;
    border-radius: 20px;
 }
 
 button selected {
-    text-color:       #1e1e2e;
+    text-color:       @dark1;
     border-radius: 20px;
 }
 
 inputbar {
-   background-color: #1e1e2e;
+   background-color: @dark1;
    spacing: 0px;
    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
    border-radius: 20px;
@@ -155,22 +155,22 @@ inputbar {
 
 prompt {
    padding:0px 10px;
-   background-color: #1e1e2e;
+   background-color: @dark1;
    text-color: @dark4;
    border-radius: 20px;
 }
 
 entry {
    padding:0px 6px;
-   background-color: #1e1e2e;
+   background-color: @dark1;
    text-color: @dark4;
    border-radius: 20px;
 }
 
 case-indicator {
    padding:6px 10px;
-   text-color: #1e1e2e;
-   background-color: #1e1e2e;
+   text-color: @dark1;
+   background-color: @dark1;
    border-radius: 20px;
 }
 
@@ -180,6 +180,6 @@ textbox-prompt-colon {
     str:        "";
     margin:     0px 0.3em 0em 0em ;
     text-color: @red;
-    background-color: #1e1e2e;
+    background-color: @dark1;
     border-radius: 20px;
 }
