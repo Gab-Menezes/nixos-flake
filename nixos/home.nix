@@ -42,6 +42,7 @@
   # manage.
   home.username = "gabriel";
   home.homeDirectory = "/home/gabriel";
+  home.shell.enableZshIntegration = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -264,9 +265,17 @@
   };
   programs.ghostty = {
     enable = true;
-    enableZshIntegration = true;
     settings = import ../configs/ghostty/ghostty.nix;
     themes = import ../configs/ghostty/themes.nix;
+  };
+  programs.keychain = {
+    enable = true;
+    keys = [
+      "github"
+    ];
+  };
+  programs.yazi = {
+    enable = true;
   };
 
   #environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -283,6 +292,7 @@
       "$terminal" = "ghostty";
       "$menu" = "wofi --show drun";
       "$browser" = "brave";
+      "$file_manager" = "yazi";
 
       general = {
           gaps_in = 5;
@@ -403,6 +413,7 @@
         "$mod, RETURN, exec, $terminal"
         "$mod, B, exec, $browser"
         "$mod, SPACE, exec, $menu"
+        "$mod, E, exec, $terminal -e $file_manager"
 
         "$mod SHIFT, left, movewindow, l"
         "$mod SHIFT, right, movewindow, r"
@@ -421,7 +432,7 @@
         "$mod, S, togglespecialworkspace"
         "$mod, F, fullscreen"
 
-        "ALT, Tab, cyclenext,"
+        "$mod, Tab, cyclenext,"
       ] ++ (
           builtins.concatLists (builtins.genList (i:
               let ws = i + 1;
