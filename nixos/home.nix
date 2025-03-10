@@ -89,6 +89,7 @@
     ida-free
     lsp-plugins
     unzip
+    playerctl
 
     discord
     spotify
@@ -290,9 +291,8 @@
     settings = import ../configs/hypr/hyprland.nix;
   };
 
-  services.easyeffects = {
-    enable = true;
-  };
+  services.easyeffects.enable = true;
+  # services.playerctld.enable = true;
 
   nix.registry.self.flake = inputs.self;
 }
