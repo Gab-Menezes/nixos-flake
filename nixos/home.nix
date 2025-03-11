@@ -286,7 +286,6 @@
     package = pkgs.rofi-wayland.override { 
       plugins = [ 
         pkgs.rofi-calc
-        pkgs.rofi-screenshot
       ]; 
     };
     extraConfig = import ../configs/hypr/rofi/rofi.nix;

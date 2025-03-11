@@ -115,8 +115,8 @@
   ];
 
   monitor = [
-    "HDMI-A-2, preferred, 0x0, 1, transform, 1"
-    "DP-5, 2560x1440@144, 1080x540, 1"
+    "desc:LG Electronics LG ULTRAWIDE 0x01010101, preferred, 0x0, 1, transform, 1"
+    "desc:AOC AG271QG, 2560x1440@144, 1080x540, 1"
   ];
 
   bindm = [
