@@ -6,8 +6,8 @@
   "$file_manager" = "$terminal -e yazi";
 
   general = {
-      gaps_in = 5;
-      gaps_out = "5,10,10,10";
+      gaps_in = 3;
+      gaps_out = "0";
 
       border_size = 2;
 
@@ -105,7 +105,7 @@
   };
 
   cursor = {
-    default_monitor = "DP-5";
+    default_monitor = "desc:AOC AG271QG";
   };
 
   exec-once = [

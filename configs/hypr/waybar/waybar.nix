@@ -138,6 +138,7 @@
     "on-scroll-down" = "wpctl set-volume @DEFAULT_SOURCE@ 5%-";
   };
   "network" = {
+    "interval" = 1;
     "format-disconnected" = "Disconnected";
     "format-wifi" = " {essid}";
     "format-ethernet" = " {ipaddr}/{cidr}  {bandwidthUpBytes} 󰁅 {bandwidthDownBytes}";
@@ -154,16 +155,16 @@
     "on-click" = "btblock";
   };
   "memory" = {
-    "interval" = 60;
+    "interval" = 1;
     "format" = " {used}G";
     "tooltip-format" = "{used} / {total} G";
   };
   "cpu" = {
-    "interval" = 60;
+    "interval" = 1;
     "format" = " {usage}% ({max_frequency}GHz)";
   };
   "disk" = {
-    "interval" = 6000;
+    "interval" = 60;
     "format" = " {percentage_used}%";
     "tooltip-format" = "{used} used out of {total} on {path} ";
   };
@@ -185,8 +186,8 @@
   #   "signal" = 2;
   # };
   "custom/player" = {
-    "format" = "󰎆 {}";
     "interval" = 5;
+    "format" = "󰎆 {}";
     "exec" = "$HOME/.config/waybar/bin/playerinfo";
     "max-length" = 40;
     "tooltip" = true;
