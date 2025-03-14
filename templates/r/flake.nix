@@ -22,6 +22,7 @@
           pkgs.rPackages.kknn
           pkgs.rPackages.mlbench
           pkgs.rPackages.GGally
+          pkgs.rPackages.glmnet
         ]; 
       };
     in 
