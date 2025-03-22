@@ -1,0 +1,42 @@
+keybind = ctrl+t=new_tab
+keybind = ctrl+w=close_tab
+keybind = ctrl+right=next_tab
+keybind = ctrl+left=previous_tab
+keybind = ctrl+one=goto_tab:1
+keybind = ctrl+two=goto_tab:2
+keybind = ctrl+three=goto_tab:3
+keybind = ctrl+four=goto_tab:4
+keybind = ctrl+five=goto_tab:5
+keybind = ctrl+six=goto_tab:6
+keybind = ctrl+seven=goto_tab:7
+keybind = ctrl+eight=goto_tab:8
+
+keybind = alt+r=new_split:right
+keybind = alt+d=new_split:down
+keybind = alt+w=close_surface
+keybind = alt+shift+up=goto_split:up
+keybind = alt+shift+down=goto_split:down
+keybind = alt+shift+left=goto_split:left
+keybind = alt+shift+right=goto_split:right
+
+keybind = alt+left=esc:b
+keybind = alt+right=esc:f
+
+keybind = ctrl+shift+t=unbind
+keybind = ctrl+shift+w=unbind
+keybind = ctrl+shift+right=unbind
+keybind = ctrl+shift+left=unbind
+keybind = alt+one=unbind
+keybind = alt+two=unbind
+keybind = alt+three=unbind
+keybind = alt+four=unbind
+keybind = alt+five=unbind
+keybind = alt+six=unbind
+keybind = alt+seven=unbind
+keybind = alt+eight=unbind
+keybind = ctrl+shift+o=unbind
+keybind = ctrl+shift+e=unbind
+keybind = ctrl+alt+up=unbind
+keybind = ctrl+alt+down=unbind
+keybind = ctrl+alt+left=unbind
+keybind = ctrl+alt+right=unbind
