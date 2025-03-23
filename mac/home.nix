@@ -31,7 +31,8 @@
   # plain files is through 'home.file'.
   home.file = {
     ".config/ghostty/bloom.glsl".source = ../configs/ghostty/bloom.glsl;
-    ".config/ghostty/config".source = ../configs/ghostty/mac;
+    ".config/ghostty/config".source = ../configs/ghostty/mac/config;
+    ".config/ghostty/themes/Custom".source = ../configs/ghostty/mac/theme;
   };
 
   home.sessionVariables = {
