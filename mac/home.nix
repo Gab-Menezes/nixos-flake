@@ -21,8 +21,8 @@
     vim
     unzip
 
-    discord
-    spotify
+    # discord
+    # spotify
 
     nil
   ];
@@ -31,6 +31,7 @@
   # plain files is through 'home.file'.
   home.file = {
     ".config/ghostty/bloom.glsl".source = ../configs/ghostty/bloom.glsl;
+    ".config/ghostty/config".source = ../configs/ghostty/mac;
   };
 
   home.sessionVariables = {
@@ -54,19 +55,17 @@
       enable = true;
       theme = "robbyrussell";
     };
-    #shellAliases = {
-    #  ls = "eza";
-    #  ll = "eza -alBhog";
-    #  grep = "rg";
-    #  h = "history";
-    #  find = "fd";
-    #  cdsw = "cd ~/dev/nixos-flake";
-    #  csw = "code ~/dev/nixos-flake";
-    #  sw = "sudo nixos-rebuild switch --flake ~/dev/nixos-flake#nixos";
-    #  bw = "sudo nixos-rebuild boot --flake ~/dev/nixos-flake#nixos";
-    #  rcargo = "nix run nixpkgs#cargo -- ";
-    #  preperf = "echo 65536 | sudo tee /proc/sys/kernel/perf_event_max_sample_rate && echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid && echo 0 | sudo tee /proc/sys/kernel/kptr_restrict";
-    #};
+    shellAliases = {
+      ls = "eza";
+      ll = "eza -alBhog";
+      grep = "rg";
+      h = "history";
+      find = "fd";
+      cdsw = "cd ~/dev/nixos-flake";
+      csw = "code ~/dev/nixos-flake";
+      sw = "darwin-rebuild switch --flake ~/dev/nixos-flake";
+      rcargo = "nix run nixpkgs#cargo -- ";
+    };
     initExtra = import ../configs/zshrc.nix;
   };
 
@@ -142,11 +141,11 @@
   #     { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # sponsorblock
   #   ];
   # };
-  programs.ghostty = {
-    enable = true;
-    settings = import ../configs/ghostty/ghostty.nix;
-    themes = import ../configs/ghostty/themes.nix;
-  };
+  # programs.ghostty = {
+  #   enable = true;
+  #   settings = import ../configs/ghostty/ghostty.nix;
+  #   themes = import ../configs/ghostty/themes.nix;
+  # };
   # programs.keychain = {
   #   enable = true;
   #   keys = [

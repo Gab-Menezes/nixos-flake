@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -10,29 +9,47 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, ... }@inputs: 
+  outputs = { self, nixpkgs, nix-darwin, ... }@inputs: 
   let
-    system = "x86_64-linux";
+    nixosPc = {
+      host = "nixos";
+      user = "gabriel";
+      system = "x86_64-linux";
+    };
+
+    macPc = {
+      host = "mac";
+      user = "krea";
+      system = "aarch64-darwin";
+    };
   in
     {
       nixosConfigurations = {
-        wsl = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            nixos-wsl.nixosModules.default
-            ./wsl/configuration.nix
-          ];
-        };
-        nixos = nixpkgs.lib.nixosSystem {
+        ${nixosPc.host} = nixpkgs.lib.nixosSystem {
           specialArgs = { 
-            inherit system; 
+            system = nixosPc.system;
+            pc = nixosPc;
             inherit inputs;
           };
           modules = [ ./nixos/configuration.nix ];
+        };
+      };
+      darwinConfigurations = {
+        ${macPc.host} = nix-darwin.lib.darwinSystem {
+          system = macPc.system;
+          specialArgs = { 
+            system = macPc.system; 
+            pc = macPc;
+            inherit inputs;
+          };
+          modules = [ ./mac/configuration.nix ];
         };
       };
 

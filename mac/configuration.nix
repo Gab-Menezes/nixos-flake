@@ -7,26 +7,25 @@
 {
   nixpkgs.hostPlatform = pc.system;
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.cudaSupport = true;
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.gc = {
     automatic = true;
-    dates = "weekly";
+    # interval = "weekly";
     options = "--delete-older-than 7d";
   };
 
-  # imports = [
-  #   inputs.home-manager.darwinModules.default
-  #   ../secrets/sops.nix
-  # ];
+  imports = [
+    inputs.home-manager.darwinModules.default
+    #../secrets/sops.nix
+  ];
 
-  # home-manager = {
-  #   extraSpecialArgs = { inherit inputs; };
-  #   users = {
-  #     gabriel = import ./home.nix;
-  #   };
-  # };
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; inherit pc; };
+    users = {
+      ${pc.user} = import ./home.nix;
+    };
+  };
 
   fonts.packages = with pkgs; [
     noto-fonts
@@ -48,13 +47,44 @@
   networking.hostName = pc.host;
 
   users.users.${pc.user} = {
+    home = "/Users/${pc.user}";
     shell = pkgs.zsh;
   };
+
+  # Fix home manager apps not showing in spotlight (https://github.com/LnL7/nix-darwin/issues/214)
+  system.activationScripts.postUserActivation.text = ''
+    apps_source="$HOME/Applications/Home Manager Apps"
+    moniker="Nix Trampolines"
+    app_target_base="$HOME/Applications"
+    app_target="$app_target_base/$moniker"
+    mkdir -p "$app_target"
+    ${pkgs.rsync}/bin/rsync --archive --checksum --chmod=-w --copy-unsafe-links --delete "$apps_source/" "$app_target"
+  '';
 
   programs.zsh.enable = true;
   # programs.ssh.startAgent = true;
 
   environment.systemPackages = with pkgs; [];
+
+  homebrew = {
+    enable = true;
+    onActivation.autoUpdate = true;
+    onActivation.upgrade = true;
+    # onActivation.cleanup = "zap";
+  
+    # extraConfig = ''
+    #   cask_args appdir: "~/Applications"
+    # '';
+  
+    casks = [
+      "discord"
+      "spotify"
+
+      # pkgs.ghostty is broken so install it as a cask
+      "ghostty"
+    ];
+  };
+
 
   system.stateVersion = 6;
 }
