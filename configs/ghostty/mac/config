@@ -113,3 +113,5 @@ keybind = super+enter=unbind
 keybind = super+alt+i=unbind
 keybind = super+alt+shift+j=unbind
 keybind = super+shift+j=unbind
+
+cursor-click-to-move = true
