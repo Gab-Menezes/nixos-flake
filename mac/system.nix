@@ -109,14 +109,14 @@
   };
 
   # Fix home manager apps not showing in spotlight (https://github.com/LnL7/nix-darwin/issues/214)
-  # activationScripts.postUserActivation.text = ''
-  #     apps_source="$HOME/Applications/Home Manager Apps"
-  #     moniker="Nix Trampolines"
-  #     app_target_base="$HOME/Applications"
-  #     app_target="$app_target_base/$moniker"
-  #     mkdir -p "$app_target"
-  #     ${pkgs.rsync}/bin/rsync --archive --checksum --chmod=-w --copy-unsafe-links --delete "$apps_source/" "$app_target"
-  # '';
+  activationScripts.postUserActivation.text = ''
+      apps_source="$HOME/Applications/Home Manager Apps"
+      moniker="Nix Trampolines"
+      app_target_base="$HOME/Applications"
+      app_target="$app_target_base/$moniker"
+      mkdir -p "$app_target"
+      rsync --archive --checksum --chmod=-w --copy-unsafe-links --delete "$apps_source/" "$app_target"
+  '';
 
   stateVersion = 6;
 }
