@@ -21,9 +21,6 @@
     vim
     unzip
 
-    # discord
-    # spotify
-
     nil
   ];
 
@@ -64,46 +61,207 @@
       find = "fd";
       cdsw = "cd ~/dev/nixos-flake";
       csw = "code ~/dev/nixos-flake";
-      sw = "darwin-rebuild switch --flake ~/dev/nixos-flake";
-      rcargo = "nix run nixpkgs#cargo -- ";
+      sw = "darwin-rebuild switch --flake ~/dev/nixos-flake && skhd -r && sudo yabai --load-sa";
+      rcargo = "nix run nixpkgs#cargo --";
     };
     initExtra = import ../configs/zshrc.nix;
   };
 
-  #programs.vscode = {
-  #  enable = true;
-  #  extensions = with pkgs.vscode-extensions; [
-  #    vscode-icons-team.vscode-icons
-  #    usernamehw.errorlens
-  #    vadimcn.vscode-lldb
-  #    fill-labs.dependi
-  #    mkhl.direnv
-  #    tamasfe.even-better-toml
-  #    mhutchie.git-graph
-  #    oderwat.indent-rainbow
-  #    jnoortheen.nix-ide
-  #    rust-lang.rust-analyzer
-  #    gruntfuggly.todo-tree
-  #    zhuangtongfa.material-theme
-  #    # github.copilot
-  #  ];
-  #  userSettings = {
-  #    "workbench.colorTheme" = "One Dark Pro Darker";
-  #    "workbench.iconTheme" = "vscode-icons";
-  #    "files.autoSave" = "afterDelay";
-  #
-  #    "rust-analyzer.inlayHints.parameterHints.enable" = false;
-  #    "rust-analyzer.inlayHints.chainingHints.enable" = false;
-  #    "rust-analyzer.inlayHints.typeHints.enable" = false;
-  #    "rust-analyzer.debug.engine" = "vadimcn.vscode-lldb";
-  #
-  #    "git.confirmSync" = false;
-  #    "nix.enableLanguageServer" = true;
-  #    "window.zoomLevel" = 2;
-  #  };
-  #  # package = pkgs.vscode-fhs;
-  #  # mutableExtensionsDir = true;
-  #};
+  programs.vscode = {
+    enable = true;
+
+    profiles.default = {
+      extensions = with pkgs.vscode-extensions; [
+        vscode-icons-team.vscode-icons
+        usernamehw.errorlens
+        vadimcn.vscode-lldb
+        fill-labs.dependi
+        mkhl.direnv
+        tamasfe.even-better-toml
+        mhutchie.git-graph
+        oderwat.indent-rainbow
+        jnoortheen.nix-ide
+        rust-lang.rust-analyzer
+        gruntfuggly.todo-tree
+        zhuangtongfa.material-theme
+        # github.copilot
+      ];
+      userSettings = {
+        "workbench.colorTheme" = "One Dark Pro Darker";
+        "workbench.iconTheme" = "vscode-icons";
+        "files.autoSave" = "afterDelay";
+    
+        "rust-analyzer.inlayHints.parameterHints.enable" = false;
+        "rust-analyzer.inlayHints.chainingHints.enable" = false;
+        "rust-analyzer.inlayHints.typeHints.enable" = false;
+        "rust-analyzer.debug.engine" = "vadimcn.vscode-lldb";
+    
+        "git.confirmSync" = false;
+        "nix.enableLanguageServer" = true;
+        "window.zoomLevel" = 2;
+      };
+      keybindings = [
+        {
+            key = "ctrl+shift+p";
+            command = "workbench.action.showCommands";
+        }
+        {
+            key = "shift+cmd+p";
+            command = "-workbench.action.showCommands";
+        }
+        {
+            key = "ctrl+p";
+            command = "workbench.action.quickOpen";
+        }
+        {
+            key = "cmd+p";
+            command = "-workbench.action.quickOpen";
+        }
+        {
+            key = "ctrl+f";
+            command = "actions.find";
+            when = "editorFocus || editorIsOpen";
+        }
+        {
+            key = "cmd+f";
+            command = "-actions.find";
+            when = "editorFocus || editorIsOpen";
+        }
+        {
+            key = "ctrl+h";
+            command = "editor.action.startFindReplaceAction";
+            when = "editorFocus || editorIsOpen";
+        }
+        {
+            key = "alt+cmd+f";
+            command = "-editor.action.startFindReplaceAction";
+            when = "editorFocus || editorIsOpen";
+        }
+        {
+            key = "ctrl+a";
+            command = "editor.action.selectAll";
+        }
+        {
+            key = "cmd+a";
+            command = "-editor.action.selectAll";
+        }
+        {
+            key = "ctrl+c";
+            command = "editor.action.clipboardCopyAction";
+        }
+        {
+            key = "cmd+c";
+            command = "-editor.action.clipboardCopyAction";
+        }
+        {
+            key = "ctrl+x";
+            command = "editor.action.clipboardCutAction";
+        }
+        {
+            key = "cmd+x";
+            command = "-editor.action.clipboardCutAction";
+        }
+        {
+            key = "ctrl+.";
+            command = "editor.action.quickFix";
+            when = "editorHasCodeActionsProvider && textInputFocus && !editorReadonly";
+        }
+        {
+            key = "cmd+.";
+            command = "-editor.action.quickFix";
+            when = "editorHasCodeActionsProvider && textInputFocus && !editorReadonly";
+        }
+        {
+            key = "ctrl+=";
+            command = "workbench.action.zoomIn";
+        }
+        {
+            key = "cmd+=";
+            command = "-workbench.action.zoomIn";
+        }
+        {
+            key = "ctrl+-";
+            command = "workbench.action.zoomOut";
+        }
+        {
+            key = "cmd+-";
+            command = "-workbench.action.zoomOut";
+        }
+        {
+            key = "ctrl+w";
+            command = "-workbench.action.switchWindow";
+        }
+        {
+            key = "ctrl+j";
+            command = "workbench.action.togglePanel";
+        }
+        {
+            key = "cmd+j";
+            command = "-workbench.action.togglePanel";
+        }
+        {
+            key = "ctrl+w";
+            command = "workbench.action.closeActiveEditor";
+        }
+        {
+            key = "cmd+w";
+            command = "-workbench.action.closeActiveEditor";
+        }
+        {
+            key = "ctrl+k ctrl+c";
+            command = "editor.action.addCommentLine";
+            when = "editorTextFocus && !editorReadonly";
+        }
+        {
+            key = "cmd+k cmd+c";
+            command = "-editor.action.addCommentLine";
+            when = "editorTextFocus && !editorReadonly";
+        }
+        {
+            key = "ctrl+k ctrl+u";
+            command = "editor.action.removeCommentLine";
+            when = "editorTextFocus && !editorReadonly";
+        }
+        {
+            key = "cmd+k cmd+u";
+            command = "-editor.action.removeCommentLine";
+            when = "editorTextFocus && !editorReadonly";
+        }
+        {
+            key = "ctrl+,";
+            command = "workbench.action.openSettings";
+        }
+        {
+            key = "cmd+,";
+            command = "-workbench.action.openSettings";
+        }
+        {
+            key = "ctrl+s";
+            command = "workbench.action.files.save";
+        }
+        {
+            key = "cmd+s";
+            command = "-workbench.action.files.save";
+        }
+        {
+            key = "ctrl+v";
+            command = "editor.action.clipboardPasteAction";
+        }
+        {
+            key = "cmd+v";
+            command = "-editor.action.clipboardPasteAction";
+        }
+        {
+            key = "ctrl+z";
+            command = "undo";
+        }
+        {
+            key = "cmd+z";
+            command = "-undo";
+        }
+      ];
+    };
+  };
   programs.git = {
     enable = true;
     userEmail = "gaha204@hotmail.com";
@@ -131,17 +289,18 @@
   programs.nix-index = {
     enable = true;
   };
-  # programs.chromium = {
-  #   enable = true;
-  #   package = pkgs.brave;
-  #   extensions = [
-  #     { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
-  #     { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
-  #     { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # dark reader
-  #     { id = "ponfpcnoihfmfllpaingbgckeeldkhle"; } # enhance for youtube
-  #     { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # sponsorblock
-  #   ];
-  # };
+  programs.chromium = {
+    enable = true;
+    package = pkgs.brave;
+    extensions = [
+      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+      { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
+      { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # dark reader
+      { id = "ponfpcnoihfmfllpaingbgckeeldkhle"; } # enhance for youtube
+      { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # sponsorblock
+    ];
+  };
+
   # programs.ghostty = {
   #   enable = true;
   #   settings = import ../configs/ghostty/ghostty.nix;

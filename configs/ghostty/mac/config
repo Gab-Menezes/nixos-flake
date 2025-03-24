@@ -60,7 +60,6 @@ keybind = super+a=unbind
 keybind = super+d=unbind
 keybind = super+k=unbind
 keybind = super+n=unbind
-keybind = super+q=unbind
 keybind = super+w=unbind
 keybind = super+zero=unbind
 keybind = super+one=unbind
