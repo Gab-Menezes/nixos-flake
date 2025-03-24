@@ -1,47 +1,13 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, pc, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.cudaSupport = true;
 
-  # dconf.settings = {
-  #   "org/gnome/desktop/wm/preferences" = {
-  #     button-layout = "appmenu:minimize,maximize,close";
-  #     num-workspaces = 2;
-  #   };
-  #   "org/gnome/desktop/interface" = {
-  #     color-scheme = "prefer-dark";
-  #     enable-hot-corners = false;
-  #   };
-  #   "org/gnome/shell/keybindings" = {
-  #     show-screenshot-ui = [
-  #       "<Shift><Super>s"
-  #     ];
-  #   };
-  #   "org/gnome/mutter" = {
-  #     edge-tiling = true;
-  #   };
-  #   "org/gnome/desktop/peripherals/mouse" = {
-  #     accel-profile = "default";
-  #     speed = -0.80;
-  #   };
-
-  #   "org/gnome/desktop/session" = {
-  #     idle-delay = 0;
-  #     # idle-delay = "uint32 0";
-  #   };
-  #   "org/gnome/settings-daemon/plugins/color" = {
-  #     night-light-schedule-automatic = false;
-  #   };
-  #   "org/gnome/settings-daemon/plugins/power" = {
-  #     sleep-inactive-ac-type = "nothing";
-  #   };
-  # };
-
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "gabriel";
-  home.homeDirectory = "/home/gabriel";
+  home.username = pc.user;
+  home.homeDirectory = "/home/${pc.user}";
   home.shell.enableZshIntegration = true;
 
   # This value determines the Home Manager release that your configuration is
@@ -56,23 +22,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-
     wget
     age
     sops
@@ -109,9 +58,8 @@
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
 
-    ".config/easyeffects/input/pro-x.json".source = ../configs/pro-x.json;
-    ".config/ghostty/bloom.glsl".source = ../configs/ghostty/bloom.glsl;
-    ".config/waybar/bin".source = ../configs/hypr/waybar/bin;
+    ".config/easyeffects/input/pro-x.json".source = ../configs/nixos/pro-x.json;
+    ".config/waybar/bin".source = ../configs/nixos/hypr/waybar/bin;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -144,25 +92,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.bash = {
-    enable = true;
-    historyControl = [ "ignoredups" "erasedups" ];
-    shellAliases = {
-      ls = "eza";
-      ll = "eza -alBhog";
-      grep = "rg";
-      h = "history";
-      find = "fd";
-      cdsw = "cd ~/dev/nixos-flake";
-      csw = "code ~/dev/nixos-flake";
-      sw = "sudo nixos-rebuild switch --flake ~/dev/nixos-flake#nixos";
-      bw = "sudo nixos-rebuild boot --flake ~/dev/nixos-flake#nixos";
-      rcargo = "nix run nixpkgs#cargo -- ";
-      preperf = "echo 65536 | sudo tee /proc/sys/kernel/perf_event_max_sample_rate && echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid && echo 0 | sudo tee /proc/sys/kernel/kptr_restrict";
-    };
-    #bashrcExtra = import ./configs/bashrc.nix;
-  };
-
   programs.zsh = {
     enable = true;
     history = {
@@ -185,8 +114,8 @@
       find = "fd";
       cdsw = "cd ~/dev/nixos-flake";
       csw = "code ~/dev/nixos-flake";
-      sw = "sudo nixos-rebuild switch --flake ~/dev/nixos-flake#nixos";
-      bw = "sudo nixos-rebuild boot --flake ~/dev/nixos-flake#nixos";
+      sw = "sudo nixos-rebuild switch --flake ~/dev/nixos-flake";
+      bw = "sudo nixos-rebuild boot --flake ~/dev/nixos-flake";
       rcargo = "nix run nixpkgs#cargo -- ";
       preperf = "echo 65536 | sudo tee /proc/sys/kernel/perf_event_max_sample_rate && echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid && echo 0 | sudo tee /proc/sys/kernel/kptr_restrict";
     };
@@ -267,8 +196,8 @@
   };
   programs.ghostty = {
     enable = true;
-    settings = import ../configs/ghostty/ghostty.nix;
-    themes = import ../configs/ghostty/themes.nix;
+    settings = import ../configs/nixos/ghostty/ghostty.nix;
+    themes = import ../configs/nixos/ghostty/themes.nix;
   };
   programs.keychain = {
     enable = true;
@@ -288,17 +217,17 @@
         pkgs.rofi-calc
       ]; 
     };
-    extraConfig = import ../configs/hypr/rofi/rofi.nix;
-    theme = ../configs/hypr/rofi/theme.rasi;
+    extraConfig = import ../configs/nixos/hypr/rofi/rofi.nix;
+    theme = ../configs/nixos/hypr/rofi/theme.rasi;
   };
   programs.waybar = {
     enable = true;
-    settings.main = import ../configs/hypr/waybar/waybar.nix;
-    style = import ../configs/hypr/waybar/style.nix;
+    settings.main = import ../configs/nixos/hypr/waybar/waybar.nix;
+    style = import ../configs/nixos/hypr/waybar/style.nix;
   };
   wayland.windowManager.hyprland = {
     enable = true;
-    settings = import ../configs/hypr/hyprland.nix;
+    settings = import ../configs/nixos/hypr/hyprland.nix;
     plugins = [
       pkgs.hyprlandPlugins.hyprspace
     ];
