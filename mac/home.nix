@@ -26,7 +26,6 @@
     flyctl
     awscli2
     yq
-    pre-commit
     # python314
 
     nil
