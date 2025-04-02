@@ -21,6 +21,13 @@
     vim
     unzip
     rsync
+    jetbrains.datagrip
+    s5cmd
+    flyctl
+    awscli2
+    yq
+    pre-commit
+    # python314
 
     nil
   ];
@@ -84,6 +91,9 @@
         rust-lang.rust-analyzer
         gruntfuggly.todo-tree
         zhuangtongfa.material-theme
+        eamodio.gitlens
+        ms-python.python
+        ms-python.debugpy
         # github.copilot
       ];
       userSettings = {
