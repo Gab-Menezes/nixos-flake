@@ -71,6 +71,7 @@
       "spotify"
       "bitwarden"
       "telegram"
+      "wireshark"
 
       # pkgs.ghostty is broken so install it as a cask
       "ghostty"

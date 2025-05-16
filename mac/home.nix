@@ -26,6 +26,20 @@
     flyctl
     awscli2
     yq
+    infisical
+
+    fluxcd
+    kubectl
+    kubelogin-oidc
+    kubectl-tree
+    kubectl-neat
+    kubectl-ktop
+    kubectl-view-secret
+    kubectl-view-allocations
+    kubectl-evict-pod
+    kubecolor
+    kubernetes-helm
+
     # python314
 
     nil
@@ -60,6 +74,8 @@
       theme = "robbyrussell";
     };
     shellAliases = {
+      k = "kubecolor";
+      kn = "k neat get --";
       ls = "eza";
       ll = "eza -alBhog";
       grep = "rg";
@@ -69,6 +85,9 @@
       csw = "code ~/dev/nixos-flake";
       sw = "darwin-rebuild switch --flake ~/dev/nixos-flake && skhd -r && sudo yabai --load-sa";
       rcargo = "nix run nixpkgs#cargo --";
+    };
+    sessionVariables = {
+      MY_TAILSCALE_HOST="gabriel-macbook-pro";
     };
     initExtra = import ../configs/zshrc.nix;
   };
@@ -91,9 +110,15 @@
         gruntfuggly.todo-tree
         zhuangtongfa.material-theme
         eamodio.gitlens
-        ms-python.python
-        ms-python.debugpy
+        #ms-python.python
+        #ms-python.debugpy
         # github.copilot
+        # dbaeumer.vscode-eslint
+
+        ms-vscode-remote.remote-ssh
+        ms-vscode-remote.remote-ssh-edit
+        golang.go
+        #ms-vscode.remote-explorer
       ];
       userSettings = {
         "workbench.colorTheme" = "One Dark Pro Darker";
