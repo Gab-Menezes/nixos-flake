@@ -1,5 +1,5 @@
 background = #0D1116
-foreground = #ebfafa
+foreground = #b4bfbf
 
 cursor-color = #f94dff
 
@@ -24,5 +24,5 @@ palette = 13=#949ae5
 palette = 6=#04d1f9
 palette = 14=#04d1f9
 
-palette = 7=#ebfafa
-palette = 15=#ebfafa
+palette = 7=#b4bfbf
+palette = 15=#b4bfbf

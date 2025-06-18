@@ -39,6 +39,10 @@
     kubectl-evict-pod
     kubecolor
     kubernetes-helm
+    kubectx
+    argocd
+    opentofu
+    eksctl
 
     # python314
 
@@ -85,6 +89,7 @@
       csw = "code ~/dev/nixos-flake";
       sw = "darwin-rebuild switch --flake ~/dev/nixos-flake && skhd -r && sudo yabai --load-sa";
       rcargo = "nix run nixpkgs#cargo --";
+      vkc = "vim ~/.kube/config";
     };
     sessionVariables = {
       MY_TAILSCALE_HOST="gabriel-macbook-pro";
