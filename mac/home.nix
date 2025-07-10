@@ -43,6 +43,7 @@
     argocd
     opentofu
     eksctl
+    ffmpeg
 
     # python314
 
@@ -87,14 +88,14 @@
       find = "fd";
       cdsw = "cd ~/dev/nixos-flake";
       csw = "code ~/dev/nixos-flake";
-      sw = "darwin-rebuild switch --flake ~/dev/nixos-flake && skhd -r && sudo yabai --load-sa";
+      sw = "sudo darwin-rebuild switch --flake ~/dev/nixos-flake && skhd -r && sudo yabai --load-sa";
       rcargo = "nix run nixpkgs#cargo --";
       vkc = "vim ~/.kube/config";
     };
     sessionVariables = {
       MY_TAILSCALE_HOST="gabriel-macbook-pro";
     };
-    initExtra = import ../configs/zshrc.nix;
+    initContent = import ../configs/zshrc.nix;
   };
 
   programs.vscode = {
@@ -115,6 +116,7 @@
         gruntfuggly.todo-tree
         zhuangtongfa.material-theme
         eamodio.gitlens
+        svelte.svelte-vscode
         #ms-python.python
         #ms-python.debugpy
         # github.copilot
