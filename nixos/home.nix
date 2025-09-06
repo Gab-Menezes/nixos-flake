@@ -119,42 +119,42 @@
       rcargo = "nix run nixpkgs#cargo -- ";
       preperf = "echo 65536 | sudo tee /proc/sys/kernel/perf_event_max_sample_rate && echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid && echo 0 | sudo tee /proc/sys/kernel/kptr_restrict";
     };
-    initExtra = import ../configs/zshrc.nix;
+    initContent = import ../configs/zshrc.nix;
   };
 
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      vscode-icons-team.vscode-icons
-      usernamehw.errorlens
-      vadimcn.vscode-lldb
-      fill-labs.dependi
-      mkhl.direnv
-      tamasfe.even-better-toml
-      mhutchie.git-graph
-      oderwat.indent-rainbow
-      jnoortheen.nix-ide
-      rust-lang.rust-analyzer
-      gruntfuggly.todo-tree
-      zhuangtongfa.material-theme
-      # github.copilot
-    ];
-    userSettings = {
-      "workbench.colorTheme" = "One Dark Pro Darker";
-      "workbench.iconTheme" = "vscode-icons";
-      "files.autoSave" = "afterDelay";
+    profiles.default = {
+      extensions = with pkgs.vscode-extensions; [
+        vscode-icons-team.vscode-icons
+        usernamehw.errorlens
+        vadimcn.vscode-lldb
+        fill-labs.dependi
+        mkhl.direnv
+        tamasfe.even-better-toml
+        mhutchie.git-graph
+        oderwat.indent-rainbow
+        jnoortheen.nix-ide
+        rust-lang.rust-analyzer
+        gruntfuggly.todo-tree
+        zhuangtongfa.material-theme
+        # github.copilot
+      ];
+      userSettings = {
+        "workbench.colorTheme" = "One Dark Pro Darker";
+        "workbench.iconTheme" = "vscode-icons";
+        "files.autoSave" = "afterDelay";
 
-      "rust-analyzer.inlayHints.parameterHints.enable" = false;
-      "rust-analyzer.inlayHints.chainingHints.enable" = false;
-      "rust-analyzer.inlayHints.typeHints.enable" = false;
-      "rust-analyzer.debug.engine" = "vadimcn.vscode-lldb";
+        "rust-analyzer.inlayHints.parameterHints.enable" = false;
+        "rust-analyzer.inlayHints.chainingHints.enable" = false;
+        "rust-analyzer.inlayHints.typeHints.enable" = false;
+        "rust-analyzer.debug.engine" = "vadimcn.vscode-lldb";
 
-      "git.confirmSync" = false;
-      "nix.enableLanguageServer" = true;
-      "window.zoomLevel" = 2;
+        "git.confirmSync" = false;
+        "nix.enableLanguageServer" = true;
+        "window.zoomLevel" = 2;
+      };
     };
-    # package = pkgs.vscode-fhs;
-    # mutableExtensionsDir = true;
   };
   programs.git = {
     enable = true;

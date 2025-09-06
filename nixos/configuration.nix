@@ -92,7 +92,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -161,8 +161,8 @@
   };
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = pc.user;
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = pc.user;
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
@@ -218,6 +218,7 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
 
-  boot.kernelPackages = pkgs.linuxPackages_testing;
+  # Uncomment when 25.11 is merged
+  # boot.kernelPackages = pkgs.linuxPackages_testing;
   boot.kernelParams = [ "isolcpus=12,13" ];
 }
