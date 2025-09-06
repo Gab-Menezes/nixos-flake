@@ -27,6 +27,7 @@
     awscli2
     yq
     infisical
+    ffmpeg
 
     fluxcd
     kubectl
@@ -43,9 +44,14 @@
     argocd
     opentofu
     eksctl
-    ffmpeg
+    ansible
+    seaweedfs
 
-    # python314
+    uv
+    # python313
+    # python311
+    # (python310.withPackages (ps: with ps; [ pip ]))
+    # (python313.withPackages (ps: with ps; [ pip virtualenv ]))
 
     nil
   ];
@@ -60,6 +66,10 @@
   home.sessionVariables = {
     EDITOR = "vim";
   };
+
+  home.sessionPath = [
+    "/Users/krea/.local/bin"
+  ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -88,7 +98,7 @@
       find = "fd";
       cdsw = "cd ~/dev/nixos-flake";
       csw = "code ~/dev/nixos-flake";
-      sw = "sudo darwin-rebuild switch --flake ~/dev/nixos-flake && skhd -r && sudo yabai --load-sa";
+      sw = "sudo darwin-rebuild switch --flake ~/dev/nixos-flake && sudo skhd -r && sudo yabai --load-sa";
       rcargo = "nix run nixpkgs#cargo --";
       vkc = "vim ~/.kube/config";
     };
@@ -117,6 +127,7 @@
         zhuangtongfa.material-theme
         eamodio.gitlens
         svelte.svelte-vscode
+        charliermarsh.ruff
         #ms-python.python
         #ms-python.debugpy
         # github.copilot
@@ -136,6 +147,9 @@
         "rust-analyzer.inlayHints.chainingHints.enable" = false;
         "rust-analyzer.inlayHints.typeHints.enable" = false;
         "rust-analyzer.debug.engine" = "vadimcn.vscode-lldb";
+        # "rust-analyzer.cargo.extraEnv" = {
+        #     "LIBTORCH_USE_PYTORCH" = "1";
+        # };
     
         "git.confirmSync" = false;
         "nix.enableLanguageServer" = true;
