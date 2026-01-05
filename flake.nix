@@ -66,6 +66,10 @@
           description = "Java shell dev environment";
           path = ./templates/java;
         };
+        go = {
+          description = "Go shell dev environment";
+          path = ./templates/go;
+        };
       };
     };
 }

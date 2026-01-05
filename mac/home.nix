@@ -46,6 +46,7 @@
     eksctl
     ansible
     seaweedfs
+    claude-code
 
     uv
     # python313
@@ -160,8 +161,10 @@
   };
   programs.git = {
     enable = true;
-    userEmail = "gaha204@hotmail.com";
-    userName = "Gabriel";
+    settings.user = {
+      email = "gaha204@hotmail.com";
+      name = "Gabriel";
+    };
   };
   programs.fastfetch = {
     enable = true;
