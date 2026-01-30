@@ -66,6 +66,7 @@
   home.file = {
     ".config/ghostty/config".source = ../configs/mac/ghostty/config;
     ".config/ghostty/themes/Custom".source = ../configs/mac/ghostty/theme;
+    ".config/atuin/config.toml".source = ../configs/atuin.toml;
   };
 
   home.sessionVariables = {
