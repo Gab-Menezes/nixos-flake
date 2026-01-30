@@ -25,9 +25,13 @@
     s5cmd
     flyctl
     awscli2
-    yq
+    yq-go
     infisical
     ffmpeg
+    claude-code
+    magic-wormhole
+    gh
+    atuin
 
     fluxcd
     kubectl
@@ -45,8 +49,8 @@
     opentofu
     eksctl
     ansible
-    seaweedfs
-    claude-code
+    skopeo
+    crane
 
     uv
     # python313
@@ -106,7 +110,7 @@
     sessionVariables = {
       MY_TAILSCALE_HOST="gabriel-macbook-pro";
     };
-    initContent = import ../configs/zshrc.nix;
+    initContent = import ../configs/zshrc.nix + "\n" + import ../configs/zshrc-atuin.nix;
   };
 
   programs.vscode = {
